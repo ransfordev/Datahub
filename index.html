@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Hub</title>
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#000000">
+<link rel="apple-touch-icon" href="icon-192.png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #050b1a;
+      color: white;
+      transition: 0.4s ease;
+    }
+
+    body.gold {
+      background: #0b1220;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px 0;
+    }
+
+    /* NAV - MOBILE FIRST */
+    nav {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      align-items: flex-start;
+      margin-bottom: 30px;
+    }
+
+    @media(min-width: 768px) {
+      nav {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2563eb, #fdbd00);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+    }
+
+    .logo h1 {
+      font-size: 28px;
+    }
+
+    .toggle-btn {
+      padding: 12px 18px;
+      border: none;
+      border-radius: 14px;
+      background: #1b2a45;
+      color: white;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    /* HERO - MOBILE FIRST */
+    .hero {
+      background: #0e2748;
+      border-radius: 25px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      transition: 0.4s ease;
+      box-shadow: 0 0 30px rgba(37, 99, 235, 0.2);
+    }
+
+    @media(min-width: 768px) {
+      .hero {
+        flex-direction: row;
+        padding: 50px;
+        justify-content: space-between;
+      }
+    }
+
+    body.gold .hero {
+      background: #fdbd00;
+      color: black;
+    }
+
+    .hero-text {
+      flex: 1;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 20px;
+      background: rgba(0,0,0,0.3);
+      margin-bottom: 15px;
+      font-weight: bold;
+      font-size: 12px;
+    }
+
+    .hero h2 {
+      font-size: 34px;
+      line-height: 1.2;
+      margin-bottom: 15px;
+    }
+
+    @media(min-width: 768px) {
+      .hero h2 {
+        font-size: 60px;
+      }
+    }
+
+    .hero p {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      color: #d1d5db;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      text-decoration: none;
+      padding: 14px 20px;
+      border-radius: 14px;
+      font-size: 16px;
+      font-weight: bold;
+      display: inline-block;
+    }
+
+    .primary-btn {
+      background: #fdbd00;
+      color: black;
+    }
+
+    .secondary-btn {
+      background: #1b2a45;
+      color: white;
+    }
+
+    /* DASHBOARD */
+    .dashboard {
+      background: #0c1830;
+      border-radius: 25px;
+      padding: 20px;
+    }
+
+    /* REMOVED NETWORK CARDS SECTION */
+
+    .buy-btn {
+      display: block;
+      margin-top: 20px;
+      background: #fdbd00;
+      color: black;
+      text-align: center;
+      padding: 16px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    /* FEATURES */
+    .features {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+
+    @media(min-width: 768px) {
+      .features {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .feature-card {
+      background: #132b4d;
+      padding: 20px;
+      border-radius: 20px;
+    }
+
+    body.gold .feature-card {
+      background: #1b2a45;
+    }
+
+    .cta {
+      margin-top: 40px;
+      background: linear-gradient(90deg, #fdbd00, #2563eb);
+      padding: 3px;
+      border-radius: 25px;
+    }
+
+    .cta-inner {
+      background: #08111f;
+      border-radius: 22px;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: 28px;
+    }
+
+    @media(min-width: 768px) {
+      .cta h2 {
+        font-size: 50px;
+      }
+    }
+    /* CUSTOMER REVIEWS */
+.reviews {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+@media(min-width: 768px) {
+  .reviews {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.review-card {
+  background: #132b4d;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+body.gold .review-card {
+  background: #1b2a45;
+}
+
+.review-card h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.review-card p {
+  color: #cbd5e1;
+  line-height: 1.6;
+}
+
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <nav>
+      <div class="logo">
+        <img class="logo-circle" src="/logo.png" alt="" />
+        <div>
+          <h1>Data <span>Hub</span></h1>
+          <small>Cheap bundles for everyone</small>
+        </div>
+      </div>
+
+      <!-- TOGGLE BUTTON (CHANGED) -->
+      <button class="toggle-btn" id="themeBtn">
+        Toggle Theme
+      </button>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-text">
+        <div class="badge">🚀 Fast • Cheap • Reliable</div>
+
+        <h2>Buy Affordable <br> Data Bundles <br> Instantly.</h2>
+
+        <p>
+          Data Huh helps students, streamers, gamers and online workers buy cheap internet bundles with instant delivery and secure payments.
+        </p>
+
+        <div class="buttons">
+          <a href="https://www.cheapdata.shop/shop/kbundle-1775921828905" target="_blank" class="btn primary-btn">
+            Buy Bundles Now
+          </a>
+
+          <a href="#features" class="btn secondary-btn">
+            Learn More
+          </a>
+        </div>
+      </div>
+
+      <div class="dashboard">
+        <h3 style="margin-bottom:10px;">Stay Connected 🌍</h3>
+
+        <p style="color:#cbd5e1; line-height:1.7;">
+          Cheap, fast and reliable internet bundles for everyone. No network cards shown anymore as requested.
+        </p>
+
+        <a href="https://www.cheapdata.shop/shop/kbundle-1775921828905" target="_blank" class="buy-btn">
+          Buy Data Bundle
+        </a>
+      </div>
+    </section>
+
+    <section class="features" id="features">
+      <div class="feature-card">
+        ⚡ <h3>Fast Activation</h3>
+        <p>Instant delivery after purchase.</p>
+      </div>
+
+      <div class="feature-card">
+        🔒 <h3>Secure Payments</h3>
+        <p>Safe transactions always.</p>
+      </div>
+
+      <div class="feature-card">
+        💸 <h3>Affordable Prices</h3>
+        <p>Student-friendly bundles.</p>
+      </div>
+    </section>
+    <section class="reviews" id="reviews">
+
+  <div class="review-card">
+    <h3>⭐ Samuel K.</h3>
+    <p>
+      Very fast delivery and cheap bundles. I use it every day for TikTok and YouTube without issues.
+    </p>
+  </div>
+
+  <div class="review-card">
+    <h3>🔥 Anita O.</h3>
+    <p>
+      The service is smooth and reliable. Bundles activate instantly after payment. Highly recommended.
+    </p>
+  </div>
+
+  <div class="review-card">
+    <h3>💙 David A.</h3>
+    <p>
+      Perfect for students. Affordable prices and very stable internet connection.
+    </p>
+  </div>
+
+</section>
+    <section class="cta">
+      <div class="cta-inner">
+        <h2>Ready to Stay Connected?</h2>
+        <a href="https://www.cheapdata.shop/shop/kbundle-1775921828905" target="_blank" class="buy-btn">Start Buying Data</a>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    const btn = document.getElementById("themeBtn");
+
+    btn.addEventListener("click", () => {
+      document.body.classList.toggle("gold");
+    });
+  </script>
+  <script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/service-worker.js');
+}
+</script>
+</body>
+</html>
